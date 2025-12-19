@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital System | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>🏥 Online Doctor Appointment System</h1>
+    </div>
+
+    <div class="login-wrapper">
+        <div class="login-box">
+            <h2 class="text-center" style="border: none; display: block;">Welcome Back</h2>
+            <p class="text-center mb-3">Please login to access your dashboard</p>
+
+            <label>Select Role:</label>
+            <select id="userRole">
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+                <option value="pharmacist">Pharmacist</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <label>Username:</label>
+            <input type="text" id="username" placeholder="Enter your name">
+
+            <button class="btn-primary" onclick="login()">Login</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

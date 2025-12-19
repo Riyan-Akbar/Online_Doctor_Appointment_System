@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Patient Dashboard</h1>
+    </div>
+
+    <div class="container">
+        <a href="index.html">← Logout</a>
+
+        <div class="card mt-3">
+            <h2>Book an Appointment</h2>
+            <form id="bookingForm">
+                <label>Patient Name:</label>
+                <input type="text" id="pName" placeholder="Enter your full name" required>
+
+                <!-- Search & Filter Section -->
+                <div
+                    style="background: var(--bg-color); padding: 1.5rem; border-radius: var(--radius); margin-bottom: 2rem;">
+                    <h4 style="margin-top: 0;">🔍 Find a Doctor</h4>
+                    <div class="flex-row">
+                        <select id="doctorSelect" onchange="filterDoctors()" style="margin-bottom: 0;">
+                            <option value="">All Doctors</option>
+                        </select>
+                        <select id="specFilter" onchange="filterDoctors()"
+                            style="margin-bottom: 0; width: auto; min-width: 200px;">
+                            <option value="">All Specializations</option>
+                            <option value="General Physician">General Physician</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Neurologist">Neurologist</option>
+                            <option value="Dermatologist">Dermatologist</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Doctor Info Card (Hidden by default) -->
+                <div id="docInfoCard" class="card"
+                    style="display: none; background: #e3f2fd; border-left: 5px solid var(--primary-color); padding: 1rem; margin-bottom: 1.5rem;">
+                    <h3 id="docName" style="margin-top: 0; color: var(--primary-color);"></h3>
+                    <p id="docSpec" style="font-weight: bold; color: #555;"></p>
+                    <div class="flex-row" style="margin-top: 10px; gap: 1rem;">
+                        <span>⭐ <strong id="docRating"></strong></span>
+                        <span>📝 <strong id="docReviews"></strong> Reviews</span>
+                        <span>🏆 <strong id="docSuccess"></strong> Success</span>
+                        <span>🏥 <strong id="docExp"></strong> Exp</span>
+                    </div>
+                </div>
+
+                <label>Select Available Slot:</label>
+                <select id="slotSelect" required>
+                    <!-- Populated by JS -->
+                </select>
+
+                <button type="submit" class="btn-primary">Book & Proceed to Payment</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>My Appointments</h3>
+            <table id="patientTable">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date & Time</th>
+                        <th>Status</th>
+                        <th>Prescription</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

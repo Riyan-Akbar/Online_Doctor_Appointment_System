@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>💳 Secure Payment</h1>
+    </div>
+
+    <div class="container">
+        <div class="card" style="max-width: 500px; margin: 0 auto; text-align: center;">
+            <h3>Invoice Details</h3>
+            <p>Consultation Fee</p>
+            <h2 style="color: var(--success-color); border: none;">$50.00</h2>
+
+            <div style="text-align: left; margin: 2rem 0;">
+                <label>Card Number</label>
+                <input type="text" placeholder="0000 0000 0000 0000" disabled
+                    style="background: #e9ecef; cursor: not-allowed;">
+
+                <div class="flex-row">
+                    <div style="flex: 1">
+                        <label>Expiry</label>
+                        <input type="text" placeholder="MM/YY" disabled
+                            style="background: #e9ecef; cursor: not-allowed;">
+                    </div>
+                    <div style="flex: 1">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123" disabled style="background: #e9ecef; cursor: not-allowed;">
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-success" id="payBtn">Pay Now</button>
+            <p class="mt-3"><a href="patient.html" style="color: var(--danger-color);">Cancel and Return</a></p>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const appId = urlParams.get('appId');
+
+        document.getElementById('payBtn').onclick = async function () {
+            if (!appId) {
+                alert("Error: No Appointment ID found.");
+                return;
+            }
+
+            try {
+                const res = await fetch(`http://localhost:3000/api/appointments/${appId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: "Paid" })
+                });
+
+                if (res.ok) {
+                    alert("Payment Successful! Redirecting...");
+                    window.location.href = "patient.html";
+                } else {
+                    alert("Payment Failed. Server Error.");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Error connecting to server.");
+            }
+        };
+    </script>
+</body>
+
+</html>

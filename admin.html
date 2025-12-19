@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>🛡️ Admin Dashboard</h1>
+    </div>
+
+    <div class="container">
+        <a href="index.html">← Logout</a>
+
+        <!-- Stats Grid -->
+        <div class="flex-row" style="gap: 1rem; margin-bottom: 2rem;">
+            <div class="card" style="flex: 1; text-align: center; border-left: 5px solid #2ecc71;">
+                <h3 style="margin: 0; color: #555;">Revenue</h3>
+                <h2 id="totalRevenue" style="color: #2ecc71; font-size: 2.5rem; margin: 10px 0;">$0</h2>
+                <p>Total Earnings</p>
+            </div>
+            <div class="card" style="flex: 1; text-align: center; border-left: 5px solid #3498db;">
+                <h3 style="margin: 0; color: #555;">Uptime</h3>
+                <h2 id="sysUptime" style="color: #3498db; font-size: 2.5rem; margin: 10px 0;">0%</h2>
+                <p>System Health</p>
+            </div>
+            <div class="card" style="flex: 1; text-align: center; border-left: 5px solid #9b59b6;">
+                <h3 style="margin: 0; color: #555;">Doctors</h3>
+                <h2 id="totalDocs" style="color: #9b59b6; font-size: 2.5rem; margin: 10px 0;">0</h2>
+                <p>Active Staff</p>
+            </div>
+            <div class="card" style="flex: 1; text-align: center; border-left: 5px solid #e74c3c;">
+                <h3 style="margin: 0; color: #555;">Issues</h3>
+                <h2 id="activeIssues" style="color: #e74c3c; font-size: 2.5rem; margin: 10px 0;">0</h2>
+                <p>Pending Alerts</p>
+            </div>
+        </div>
+
+        <div class="flex-row" style="gap: 2rem; align-items: flex-start;">
+            <!-- Add/Edit Doctor Form -->
+            <div class="card" style="flex: 1;">
+                <h3 id="formTitle">Add New Doctor</h3>
+                <form id="adminForm">
+                    <input type="hidden" id="editDocId"> <!-- Hidden ID for Editing -->
+
+                    <label>Doctor Name:</label>
+                    <input type="text" id="docName" placeholder="e.g. Dr. Strange" required blob-select="true">
+
+                    <label>Specialization:</label>
+                    <select id="docSpec">
+                        <option>General Physician</option>
+                        <option>Cardiologist</option>
+                        <option>Neurologist</option>
+                        <option>Dermatologist</option>
+                        <option>Orthopedic</option>
+                    </select>
+
+                    <div class="flex-row" style="gap: 10px;">
+                        <div style="flex:1">
+                            <label>Experience (Yrs):</label>
+                            <input type="number" id="docExp" placeholder="10" required>
+                        </div>
+                        <div style="flex:1">
+                            <label>Rating (0-5):</label>
+                            <input type="number" step="0.1" id="docRating" placeholder="4.5" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-success" style="width: 100%; margin-top: 1rem;" id="submitBtn">Add
+                        Doctor</button>
+                    <button type="button" id="cancelEdit" class="btn-danger"
+                        style="display: none; width: 100%; margin-top: 5px;" onclick="resetForm()">Cancel Edit</button>
+                </form>
+            </div>
+
+            <!-- Doctor List -->
+            <div class="card" style="flex: 2;">
+                <h3>Manage Staff</h3>
+                <table id="doctorListTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Spec</th>
+                            <th>Exp</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

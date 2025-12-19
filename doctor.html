@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Doctor Dashboard</h1>
+    </div>
+
+    <div class="container">
+        <a href="index.html">← Logout</a>
+
+        <div class="card mt-3">
+            <h3>📅 Manage Availability</h3>
+            <p>Add new time slots for patients to book.</p>
+
+            <div class="flex-row" style="align-items: flex-end; gap: 1rem;">
+                <div style="flex: 1;">
+                    <label>My ID (Temporary):</label>
+                    <input type="number" id="docIdInput" placeholder="ID" style="margin-bottom: 0;">
+                </div>
+                <div style="flex: 2;">
+                    <label>Date & Time:</label>
+                    <input type="datetime-local" id="slotTime" style="margin-bottom: 0;">
+                </div>
+                <div>
+                    <button class="btn-primary" onclick="addSlot()" style="margin-bottom: 0;">Add Slot</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Upcoming Appointments</h3>
+            <table id="doctorTable">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
