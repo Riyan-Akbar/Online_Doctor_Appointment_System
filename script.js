@@ -468,14 +468,14 @@ window.resetForm = function() {
 // Booking Form Listener
 const bookForm = document.getElementById("bookingForm");
 if (bookForm) {
-  bookForm.addEventListener("submit", (e) => {
+    bookForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const name = document.getElementById("pName").value;
     const slotId = document.getElementById("slotSelect").value;
     if (slotId) {
-      bookAppointment(name, slotId);
+        bookAppointment(name, slotId);
     } else {
-      alert("Please select an available slot.");
+        alert("Please select an available slot.");
     }
-  });
+    });
 }
